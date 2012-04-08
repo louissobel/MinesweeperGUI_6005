@@ -1,4 +1,4 @@
-This is a interface for the 6.005 minesweeper project.
+This is a web interface for the 6.005 minesweeper project.
 
 I wrote it because I didn't want to write  unit tests, hopefully it will help debug for the final submission.
 
@@ -13,6 +13,12 @@ default settings:
 	- webserver port: 4443
 
 a little perl script reads the config file and starts everything up.
+
+so to run:
+
+perl minesweeperWebGUI.pl [config_file]
+
+if config_file is omitted, it will look for a file called 'config'
 
 ========================
 To use (as is):
@@ -42,7 +48,7 @@ It will work on Mac, should work on linux
 
 I know that the startup script won't work on windows, because it forks, but the individual components still might
 
-Also, there is code in here to handle an additional square character (besides, '-',' ', or '[1-8]'), namely 'o', which i used
+Also, there is code in here to handle an additional square character (besides, '-',' ', or '[1-8]'), namely 'o', which I used
 to represent an unexploded bomb (to help with debugging the file reader and the game itself). If you implement this in 
 your java code, you will be able to see where all the bombs are located.
 
@@ -50,4 +56,4 @@ your java code, you will be able to see where all the bombs are located.
 Feel free to share and fork, or email me with any suggestions
 
 Louis Sobel
-
+sobel@mit.edu

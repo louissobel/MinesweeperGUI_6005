@@ -1,0 +1,53 @@
+This is a interface for the 6.005 minesweeper project.
+
+I wrote it because I didn't want to write  unit tests, hopefully it will help debug for the final submission.
+
+It runs a websocket server using socket.io and node.js.
+It pretty much pipes messages sent to that websocket to the java minesweeper server running.
+
+It also runs the python built-in file server to serve the client and its static files.
+
+default settings:
+	- minsweeper port: 4444
+	- websocket port: 4445
+	- webserver port: 4443
+
+a little perl script reads the config file and starts everything up.
+
+========================
+To use (as is):
+	you need to add 2 commands to the minesweeper server
+	
+	1.
+		command:
+			size
+		response:
+			size:<boardsize>
+		(where board size is the integer width or height of the square board)
+	
+	2.
+		command:
+			pcount
+		response:
+			pcount:<player count>
+		(where player count is the integer number of players)
+
+also, the java server should be running before starting up anything else
+
+
+=========================
+Notes:
+You need node.js, python, and a WebSocket enabled browser to run this
+It will work on Mac, should work on linux
+
+I know that the startup script won't work on windows, because it forks, but the individual components still might
+
+Also, there is code in here to handle an additional square character (besides, '-',' ', or '[1-8]'), namely 'o', which i used
+to represent an unexploded bomb (to help with debugging the file reader and the game itself). If you implement this in 
+your java code, you will be able to see where all the bombs are located.
+
+========================
+Feel free to share and fork, or email me with any suggestions
+
+Louis Sobel
+

@@ -38,12 +38,12 @@ if ($pid == 0) {
 	my $minesweeperport = $config_value_hash{'MINESWEEPERPORT'};
 	print STDERR "launching websocket server on port $websocketport\n";
 	exec("node ./server/proxyServer.js $websocketport $minesweeperport");
+} else {
+
+	#launching the client
+	my $clientport = $config_value_hash{'WEBSERVERPORT'};
+	print STDERR "launching the client server on port $clientport\n";
+	print STDERR "gui will be available at http://localhost:$clientport/client/client.html\n";
+	exec("python -m SimpleHTTPServer $clientport");
 }
-
-#launching the client
-my $clientport = $config_value_hash{'WEBSERVERPORT'};
-print STDERR "launching the client server on port $clientport\n";
-print STDERR "gui will be available at http://localhost:$clientport/client/client.html\n";
-exec("python -m SimpleHTTPServer $clientport");
-
 

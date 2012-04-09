@@ -22,16 +22,16 @@ if config_file is omitted, it will look for a file called 'config'
 
 ========================
 To use (as is):
-	you need to add 2 commands to the minesweeper server
-	
-	1.
+	you need to add 1 commands to the minesweeper server	
+
 		command:
 			size
 		response:
 			size:<boardsize>
 		(where board size is the integer width or height of the square board)
 	
-	2.
+	if you want to show how many people are playing, add this one too
+
 		command:
 			pcount
 		response:

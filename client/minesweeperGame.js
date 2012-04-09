@@ -1,6 +1,7 @@
 $('document').ready(function(){
 	startGame();
 	sendCommand("size");
+	$('#message').html('getting size of board from server...');
 });
 
 
@@ -12,21 +13,32 @@ function startGame() {
 	var size = 0;
 	var board = new Array();
 	
+	//a fallback if the size command isn't installed
+	var boardCreated = false;
+	setTimeout(function(){
+		if (!boardCreated) {
+			var sizePrompt = 'Your server has not provided a size for the board, so enter it below.\n'+
+							'This will happen automatically if your size command responds with "size:<the size of the board>"\n'
+			size = parseInt(prompt(sizePrompt));
+			createNewBoard(size);
+			startLookLoop();
+		}
+	},5000)
+	
 	var lastDig = null;
-	var loopIntervalId;
+	var loopIntervalId = 0;
 	
 	var gameHandler = function(e) {
-		console.log(e.message.type);
 		var message = e.message;
 		if (!message.valid) {
 			return;
 		}
 		
-		if (message.type == "size") {
+		if (message.type == "silze") {
 			
 			size = message.board;
 			createNewBoard(size);
-			loopIntervalId = startLookLoop();
+			startLookLoop();
 			
 			
 		} else if (message.type == "pcount") {
@@ -41,31 +53,31 @@ function startGame() {
 	
 	var createNewBoard = function(size) {
 		///creates a size x size board of divs
+		
+		if (boardCreated) {
+			return false;
+		}
+		
 		var parent = $('#minesweeperDiv');
 		var row;
 		var square;
-		console.log(size+"{}");
 		for (i=0;i<size;i++) {
 			row = document.createElement("div");
 			$(row).addClass('row');
 			for (j=0;j<size;j++) {
 				square = document.createElement("div");
 				$(square).addClass('square');
-				$(square).addClass('undug');
 				square.coordString = j+" "+i;
 				board.push(square);
 				row.appendChild(square);
 			}
-			console.log(parent);
 			parent.append(row);
-			console.log(row);
 		}
 		
 		//the handlers!
 		$('.square')
 		.click(function(e) {
 			lastDig = this;
-			console.log("digging "+this.coordString);
 			sendCommand("dig "+this.coordString);
 		})
 		.bind('contextmenu', function(e){
@@ -84,7 +96,7 @@ function startGame() {
 			.removeClass('dug')
 			.removeClass('bomb')
 			.removeClass('flagged')
-			.html();
+			.html('');
 		})
 		.on('dug',function(e,neighbors) {
 			var numberHTML = "";
@@ -102,24 +114,29 @@ function startGame() {
 			.removeClass('dug')
 			.removeClass('bomb')
 			.addClass('flagged')
-			.html();
+			.html('');
 		})
 		.on('bomb',function() {
 			$(this)
 			.addClass('bomb')
-			.removeClass('flagged');
+			.removeClass('flagged')
+			.removeClass('dug');
 		});
+		
+		boardCreated = true;
 		
 	}
 	
 	
 	var startLookLoop = function() {
-		loopFunc = function() {
-			sendCommand("look");
-			sendCommand("pcount");
-		};
-		loopFunc();
-		return setInterval(loopFunc,REFRESHTIMEOUT);
+		if (loopIntervalId == 0) {
+			loopFunc = function() {
+				sendCommand("look");
+				sendCommand("pcount");
+			};
+			loopFunc();
+			loopIntervalId = setInterval(loopFunc,REFRESHTIMEOUT);
+		}
 	};
 	
 	var updateBoard = function(newboard) {
@@ -134,7 +151,6 @@ function startGame() {
 			if (input.match(/^dug/)) {
 				$(square).trigger('dug',input.split(':')[1]);
 			} else {
-				console.log("triggering " +input)
 				$(square).trigger(input);
 			}
 			
@@ -143,7 +159,8 @@ function startGame() {
 	var handleBoom = function() { 
 		$(lastDig)
 		.addClass('exploded')
-		.addClass('bomb');
+		.addClass('bomb')
+		.addClass('dug');
 		clearInterval(loopIntervalId);
 		$('.square')
 		.off('click')
@@ -151,7 +168,7 @@ function startGame() {
 		
 		$('#message')
 		.addClass('error')
-		.html('BOOM YOU LOSE');
+		.html('<b>BOOM YOU LOSE</b> (refresh to reconnect)');
 	};
 	
 	var updatePCount = function(count) {

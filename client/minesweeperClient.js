@@ -16,7 +16,6 @@ $('document').ready(function() {
 });
 
 function initConnection(host,port) {
-	console.log(host);
 	
 
 	var socket = io.connect('http://'+host+':'+port);
@@ -24,7 +23,6 @@ function initConnection(host,port) {
 	
 	
 	socket.on('response',function(message) {
-		console.log("about to recieve");
 		
 		var receiveEvent = $.Event("messageReceived");
 		receiveEvent.message = message;
@@ -34,7 +32,6 @@ function initConnection(host,port) {
 	});
 	
 	$('body').on('sendMessage',function(e) {
-		console.log('about to send');
 		socket.emit('message',e.message);
 	});
 	

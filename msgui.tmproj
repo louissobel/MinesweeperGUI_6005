@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Documents/Misc/Projects/MinesweeperGui/client/client.html</string>
+	<string>server/proxyServer.js</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,35 +21,35 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Documents/Misc/Projects/MinesweeperGui/client/client.html</key>
+		<key>client/client.html</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>22</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>25</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Documents/Misc/Projects/MinesweeperGui/client/minesweeper.css</key>
+		<key>client/minesweeper.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>57</integer>
+				<integer>47</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>28</integer>
 		</dict>
-		<key>Documents/Misc/Projects/MinesweeperGui/client/minesweeperClient.js</key>
+		<key>client/minesweeperClient.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -63,21 +63,21 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>Documents/Misc/Projects/MinesweeperGui/client/minesweeperGame.js</key>
+		<key>client/minesweeperGame.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>32</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>127</integer>
+				<integer>52</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>116</integer>
+			<integer>32</integer>
 		</dict>
-		<key>Documents/Misc/Projects/MinesweeperGui/server/proxyServer.js</key>
+		<key>server/proxyServer.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -89,20 +89,20 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>16</integer>
+			<integer>47</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Documents/Misc/Projects/MinesweeperGui/client/client.html</string>
-		<string>Documents/Misc/Projects/MinesweeperGui/client/minesweeper.css</string>
-		<string>Documents/Misc/Projects/MinesweeperGui/server/proxyServer.js</string>
-		<string>Documents/Misc/Projects/MinesweeperGui/client/minesweeperClient.js</string>
-		<string>Documents/Misc/Projects/MinesweeperGui/client/minesweeperGame.js</string>
+		<string>client/minesweeperClient.js</string>
+		<string>client/minesweeperGame.js</string>
+		<string>server/proxyServer.js</string>
+		<string>client/minesweeper.css</string>
+		<string>client/client.html</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{331, 76}, {1070, 802}}</string>
+	<string>{{255, 76}, {1070, 802}}</string>
 </dict>
 </plist>

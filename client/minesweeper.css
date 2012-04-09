@@ -45,7 +45,7 @@ div.square {
 	border-style:solid;
 	border-width:1px;
 	border-color:black;
-	cursor:pointer;
+	cursor:crosshair;
 	background-image:url('squareSprites.gif');
 	background-position:0px -50px;
 	background-color:#CCC;
@@ -54,6 +54,7 @@ div.square {
 
 div.square.dug {
 	background-color:#999;
+	cursor:default;
 }
 
 div.square.flagged {

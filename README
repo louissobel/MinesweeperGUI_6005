@@ -22,6 +22,9 @@ if config_file is omitted, it will look for a file called 'config'
 
 ========================
 To use (as is):
+	you need node.js installed
+	you need the node socket.io module (if you have node, get it using 'npm install socket.io')
+
 	you need to add 1 commands to the minesweeper server	
 
 		command:

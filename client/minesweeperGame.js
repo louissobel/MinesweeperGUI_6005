@@ -34,7 +34,7 @@ function startGame() {
 			return;
 		}
 		
-		if (message.type == "silze") {
+		if (message.type == "size") {
 			
 			size = message.board;
 			createNewBoard(size);

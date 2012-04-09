@@ -4,6 +4,8 @@ $('document').ready(function(){
 });
 
 
+var REFRESHTIMEOUT = 2500;
+
 function startGame() {
 	//i need to get the size
 	
@@ -117,7 +119,7 @@ function startGame() {
 			sendCommand("pcount");
 		};
 		loopFunc();
-		return setInterval(loopFunc,1000);
+		return setInterval(loopFunc,REFRESHTIMEOUT);
 	};
 	
 	var updateBoard = function(newboard) {
